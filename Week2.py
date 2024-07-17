@@ -7,8 +7,8 @@ Created on Wed Jul 17 15:44:13 2024
 """
 
 currentYear = 2024
-print(currentYear)
-print(type(currentYear))
+# print(currentYear)
+# print(type(currentYear))
 
 name = input("What is your name? ")
 
@@ -24,14 +24,17 @@ year = input("What year were you born? ")
 #     year = int(year)
 if year.isdigit():
     print("You gave me a number.")
-    if int(year) > 2024:
-        print("That's not a valid year 2")
+    if int(year) > 2024 or int(year) < 1900:
+        print("Stop being a goofball")        
     else:
         pass
 elif year.isdigit():
     year = int(year)
 else:
     print("You didn't give a valid year")
+
+
+while 
 
 
 # calcute your age... this year
