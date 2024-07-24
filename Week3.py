@@ -32,9 +32,18 @@ userInput = int(input("Choose a number: "))
 # Covert to celcius
 
 ## take input and convert to celcius
-# celcius = farenheit - 32 * 5/9
+# celcius = (farenheit - 32) * 5/9
+
+print(((userInput -32) * 5 / 9 ), "C")
+
+# farenheit = celcius * 9/5 + 32
+print(((userInput * 9/5) + 32) ,"F")
 
 
+
+
+
+######################3
 ## Prime Checker
 
 # def isPrime(num):
