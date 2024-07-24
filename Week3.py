@@ -33,12 +33,19 @@ choice1 = input("What to convert from F or C? ")
 
 ## take input and convert
 # celcius = (farenheit - 32) * 5/9
-def convertF2C():
-    print(((userInput -32) * 5 / 9 ), "C")
+def convertF2C(F):
+    print(((F -32) * 5 / 9 ), "C")
 
 # farenheit = celcius * 9/5 + 32
-def convertC2F():
-    print(((userInput * 9/5) + 32) ,"F")
+def convertC2F(C):
+    print(((C * 9/5) + 32) ,"F")
+
+convertC2F(21)
+convertC2F(45)
+convertC2F(90)
+convertF2C(90)
+convertF2C(45)
+convertF2C(32)
 
 if choice1.upper() == "F":
     #convertF2C()
@@ -47,6 +54,7 @@ if choice1.upper() == "F":
 elif choice1.upper() == "C":
     #convertC2F()
     print(((userInput * 9/5) + 32) ,"F")
+    
 else:
     print("Invalid option")
 
