@@ -28,17 +28,25 @@ userInput = int(input("Choose a number: "))
 # if a == 2:
 #     print("It's TRUE")
 
+## Ask what direction are we going?
+choice1 = input("What to convert from F or C? ")
 
-# Covert to celcius
-
-## take input and convert to celcius
+## take input and convert
 # celcius = (farenheit - 32) * 5/9
-
-print(((userInput -32) * 5 / 9 ), "C")
+def convertF2C():
+    print(((userInput -32) * 5 / 9 ), "C")
 
 # farenheit = celcius * 9/5 + 32
-print(((userInput * 9/5) + 32) ,"F")
+def convertC2F():
+    print(((userInput * 9/5) + 32) ,"F")
 
+if choice1 == "F":
+    #convertF2C()
+    print(((userInput -32) * 5 / 9 ), "C")
+
+elif choice1 == "C":
+    #convertC2F()
+    print(((userInput * 9/5) + 32) ,"F")
 
 
 

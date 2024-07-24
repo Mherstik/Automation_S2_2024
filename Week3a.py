@@ -15,15 +15,25 @@ if choice1 == "movies":
     print("Movie lover")
     
 ### Action or comedy
-    # choice2 = 
+    choice2 = input("Action or comedy")
     # if ???
+    if choice2 == "action":
+        print("You like action movies")
     # else ??
+    else:
+        print("You like comedy movies")
 
 # if they like music
 elif choice1 == "music":
     print("Music lover")
 
     ### classical or modern
+    choice2 = input("Classical or modern? ")
+    if choice2 == "classical":
+        print("You like classical music")
+        
+    else:
+        print("You like modern music")
 
 else:
     print("Invalid option")
