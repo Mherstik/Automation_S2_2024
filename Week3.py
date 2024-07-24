@@ -28,17 +28,27 @@ userInput = int(input("Choose a number: "))
 # if a == 2:
 #     print("It's TRUE")
 
-def isPrime(num):
-    # check if number less than 2
-    # and give back a false
-    
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
 
-if isPrime(userInput) == True:
-    print("It's a prime")
-else:
-    print("Not a prime")
+# Covert to celcius
+
+## take input and convert to celcius
+# celcius = farenheit - 32 * 5/9
+
+
+## Prime Checker
+
+# def isPrime(num):
+#     # check if number less than 2
+#     if num < 2:
+#     # and give back a false
+#         return False
+#     for i in range(2, int(num ** 0.5) + 1):
+#         if num % i == 0:
+#             return False
+#     return True
+
+# if isPrime(userInput) == True:
+#     print("It's a prime")
+# else:
+#     print("Not a prime")
     
