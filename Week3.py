@@ -40,13 +40,15 @@ def convertF2C():
 def convertC2F():
     print(((userInput * 9/5) + 32) ,"F")
 
-if choice1 == "F":
+if choice1.upper() == "F":
     #convertF2C()
     print(((userInput -32) * 5 / 9 ), "C")
 
-elif choice1 == "C":
+elif choice1.upper() == "C":
     #convertC2F()
     print(((userInput * 9/5) + 32) ,"F")
+else:
+    print("Invalid option")
 
 
 
