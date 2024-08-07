@@ -34,7 +34,7 @@ def get_pin():
             if error_count == 3:
                 # eat card!!
                 print("Too many pin attempts.\nContact bank for card")
-                exit()
+                sys.exit()
                 # end program
 
 
@@ -45,11 +45,13 @@ def get_balance():
 
 
 def transaction():
+    global balance
+
     # ask deposit or withdrawl
     options = ''
 
     while options.lower() != "x":
-        options = input("Would you like to do:\n[1] Deposit  or \n[2] Withdraw \nX to exit: ")
+        options = input("Would you like to do:\n[1] Deposit or \n[2] Withdraw \nX to exit: ")
         
         if options.lower() == "x":
             sys.exit()
@@ -59,7 +61,8 @@ def transaction():
             amount = int(input("How much are you wanting: "))
 
             if int(options) == 1:
-                pass
+                balance = balance + amount
+
             
             elif int(options) == 2:
             # if withdrawl - check if there's enough
@@ -68,18 +71,26 @@ def transaction():
                 if amount > get_balance():
                     print("You don't have enough money")
                     print("You have $" + str(get_balance()), "available")
-                    
+                else:
+                    balance = balance - amount
                 
             else:
                 print("invalid option")
             
-    
+        print("Your balance is $"+ str(get_balance()))
+        ## Continue?
+        print("Do you want to continue?")
+        cont = input("y/N: ")
+        if cont.lower() == "y":
+            continue
+        else:
+            sys.exit()
     
     # if deposit - increase balance by amount
-    
+
+get_pin()    
+print(get_balance())
 transaction()
-# get_pin()
-# get_balance()
 
 
 print("End of code!")
