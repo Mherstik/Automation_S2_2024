@@ -5,7 +5,7 @@ Created on Wed Jul 31 18:04:48 2024
 
 @author: marcus
 """
-
+import sys
 
 balance = 200
 
@@ -41,23 +41,40 @@ def get_pin():
 
 def get_balance():
     global balance
-    print(balance)
+    return balance
 
 
 def transaction():
     # ask deposit or withdrawl
     options = ''
-    print("Would you like to deposit [1] or withdraw [2]")
-    options = input()
-    
-    # ask how much
-    amount = int(input("How much are you wanting: "))
- #   if int(options) == 1:
+
+    while options.lower() != "x":
+        options = input("Would you like to do:\n[1] Deposit  or \n[2] Withdraw \nX to exit: ")
         
+        if options.lower() == "x":
+            sys.exit()
+        
+        else:
+            # ask how much
+            amount = int(input("How much are you wanting: "))
+
+            if int(options) == 1:
+                pass
+            
+            elif int(options) == 2:
+            # if withdrawl - check if there's enough
+                # if there's enough, give money & reduce balance
+                # if not enough, say sorry, you don't have enough
+                if amount > get_balance():
+                    print("You don't have enough money")
+                    print("You have $" + str(get_balance()), "available")
+                    
+                
+            else:
+                print("invalid option")
+            
     
-    # if withdrawl - check if there's enough
-        # if there's enough, give money & reduce balance
-        # if not enough, say sorry, you don't have enough
+    
     # if deposit - increase balance by amount
     
 transaction()
