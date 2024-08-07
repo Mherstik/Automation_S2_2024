@@ -46,12 +46,21 @@ def get_balance():
 
 def transaction():
     # ask deposit or withdrawl
+    options = ''
+    print("Would you like to deposit [1] or withdraw [2]")
+    options = input()
+    
     # ask how much
+    amount = int(input("How much are you wanting: "))
+ #   if int(options) == 1:
+        
+    
     # if withdrawl - check if there's enough
         # if there's enough, give money & reduce balance
         # if not enough, say sorry, you don't have enough
+    # if deposit - increase balance by amount
     
-
+transaction()
 # get_pin()
 # get_balance()
 
