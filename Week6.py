@@ -15,37 +15,37 @@ while val != "x":
     print(newList)
 
 
-# aList = ["server1",
-#          "server2",
-#          "server3", 
-#          "server4"]
+aList = ["server1",
+          "server2",
+          "server3", 
+          "server4"]
 
-# print(len(aList))
+print(len(aList))
 
-# print(aList[2])
-# print(aList[:2])
+print(aList[2])
+print(aList[:2])
 
 ## this is a string
-# something = "This is something. It is really long"
+something = "This is something. It is really long"
 
-# count = 0
+count = 0
 # for each in something:
 #     print(each)
     
 
-# for each in something:
-#     if each == "y":
-#         count = count + 1
-# print(count)
+for each in something:
+    if each == "t":
+        count = count + 1
+print(count)
 
-# print(something)
+print(something)
 
-# print(len(something))
+print(len(something))
 
 # print(something[19:])
 # print(something[:19])
 # print(something[:-4])
-
+# print(something[1:20:5])
 
 # import random
 # print(random.randrange(0,100,5))
