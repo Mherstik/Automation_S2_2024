@@ -6,7 +6,7 @@ Created on Wed Aug 14 14:20:01 2024
 @author: marcus
 """
 
-newList = {}
+newList = []
 val = ''
 
 while val != "x":
