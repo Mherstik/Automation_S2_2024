@@ -50,7 +50,7 @@ print(len(something))
 # import random
 # print(random.randrange(0,100,5))
 # print(random.randrange(0,-66,-5))
-# # def numberCheck(num):
+# def numberCheck(num):
 #     '''
 
 #     Parameters
