@@ -35,10 +35,22 @@ print(os.uname())
 import sys
 print("Using SYS")
 print(sys.platform)
+osType = sys.platform
 print(sys.version)  # this tells you Python version
 
 print("Using PLATFORM")
 import platform
 print(platform.system())
 
+
 ## adding random stuff
+## 
+def get_IPaddress():
+    if osType == "linux":
+        print(os.system('ip a'))
+    else:
+        print(os.system('ipconfig'))
+
+get_IPaddress()
+import socket
+
