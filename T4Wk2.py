@@ -40,3 +40,5 @@ print(sys.version)  # this tells you Python version
 print("Using PLATFORM")
 import platform
 print(platform.system())
+
+## adding random stuff
