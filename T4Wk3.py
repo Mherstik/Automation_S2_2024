@@ -8,6 +8,8 @@ Created on Wed Oct 16 15:15:11 2024
 from time import time, ctime, gmtime
 import os
 import sys
+import csv
+
 
 # Get time
 def get_time():
@@ -23,20 +25,42 @@ os_name = os.name
 osType = sys.platform
 
 #  check to see if file exists...?
+#fileName = "testfolder"
 fileName = "testfile.csv"
-isExists = os.path.exists(fileName)
-print(isExists)
+# isExists = os.path.exists(fileName)
+# print(isExists)
 
-if isExists == True:
-    pass
-    # do something
+
+isFile = os.path.isfile(fileName)
+# print(isFile)
+# isFile = os.path.isdir(fileName)
+# print(isFile)
+
+
+header = ['Time', 'ostype', 'osname']
+
+def writeHeader():
+    with open(fileName, mode='w') as file:
+        writer = csv.writer(file)
+        writer.writerow(header)
+    print("Headers written.\nNow extracting data from PC")
+
+if isFile == True:
+    print("File exists")  #... extracting data from PC")
+    fileKeep = input("Want to Delete or Continue (C/D)?")
+    if fileKeep.upper() == "D" or fileKeep.upper() == "DELETE":
+        print("Deleting file")
+        os.remove(fileName)
+        writeHeader()
+    else:
+        print("Continuing")
 else:
-    pass
-    # do something else
+    print("File not found... writing headers.")
+    writeHeader()
     
-# Time, ostype, osname
 
-data = [str(pcTime + "," + osType + "," + os_name)]
+# data = [str(pcTime + "'," + osType + "," + os_name)] # incorrect data type of string
+data = [pcTime, osType, os_name]
 print(data)
 
 ## pause
@@ -52,7 +76,6 @@ userInput = input()
 #     print(f.read())
     
 print("read as CSV file\n")
-import csv
 # exampleFile = open('testfile.csv')
 # exampleReader = csv.reader(exampleFile)
 # exampleData = list(exampleReader)
