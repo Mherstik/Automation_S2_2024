@@ -62,6 +62,7 @@ else:
 # data = [str(pcTime + "'," + osType + "," + os_name)] # incorrect data type of string
 data = [pcTime, osType, os_name]
 print(data)
+print(type(data))
 
 ## pause
 print("let's pause")
@@ -81,14 +82,22 @@ print("read as CSV file\n")
 # exampleData = list(exampleReader)
 # print(exampleData)
 
+
 ### NICER OPENING
 def readCSVFile():
     with open(fileName, mode='r') as file:
         csvFile = csv.reader(file)
         for lines in csvFile:
             print(lines)
-# readCSVFile()
 
+def seperator():
+    print("---------------------")
+seperator()
+print("reading file before adding data")
+seperator()
+readCSVFile()
+
+seperator()
 with open(fileName, mode='a') as file:
     writer = csv.writer(file)
     writer.writerow(data)
