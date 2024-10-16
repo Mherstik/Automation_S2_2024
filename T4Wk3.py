@@ -22,9 +22,18 @@ os_name = os.name
 # Get OS type
 osType = sys.platform
 
-### open file to write to it
 #  check to see if file exists...?
+fileName = "testfile.csv"
+isExists = os.path.exists(fileName)
+print(isExists)
 
+if isExists == True:
+    pass
+    # do something
+else:
+    pass
+    # do something else
+    
 # Time, ostype, osname
 
 data = [str(pcTime + "," + osType + "," + os_name)]
@@ -51,17 +60,17 @@ import csv
 
 ### NICER OPENING
 def readCSVFile():
-    with open('testfile.csv', mode='r') as file:
+    with open(fileName, mode='r') as file:
         csvFile = csv.reader(file)
         for lines in csvFile:
             print(lines)
 # readCSVFile()
 
-with open('testfile.csv', mode='a') as file:
+with open(fileName, mode='a') as file:
     writer = csv.writer(file)
     writer.writerow(data)
 
-    
+
 
 readCSVFile()
 
