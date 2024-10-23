@@ -20,11 +20,19 @@ import csv
 ## 
 import urllib.request
 
-url = 'http://ipv4.download.thinkbroadband.com/20MB.zip'
+url = 'https://ipv4.download.thinkbroadband.com/20MB.zip'
+# url = 'http://speed.hetzner.de/100MB.bin'
+
 
 def checkSpeed(url):
-    pass
-
+    start_time = time()  # or time.time()
+    #print(start_time)
+    ## DO TESTS
+    with urllib.request.urlopen(url) as response:
+        response.read()
+    stop_time = time()
+    #print(stop_time)
+    print(f'Elapsed time is {stop_time - start_time}')
 
 speed = checkSpeed(url)
 print(f'Download speed was {speed} Mbps')
