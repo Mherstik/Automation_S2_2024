@@ -20,11 +20,24 @@ import csv
 ## 
 import urllib.request
 
-url = 'https://ipv4.download.thinkbroadband.com/20MB.zip'
+url = 'https://github.com/Mherstik/Automation_S2_2024/raw/refs/heads/main/20MB.zip'
 # url = 'http://speed.hetzner.de/100MB.bin'
 
 
 def checkSpeed(url):
+    '''
+
+    Parameters
+    ----------
+    url : a GitHub URL
+        This will be a file on GitHub
+
+    Returns
+    -------
+    speed : float
+        the speed divided by the time it took to download.
+
+    '''
     start_time = time()  # or time.time()
     #print(start_time)
     ## DO TESTS
@@ -32,10 +45,40 @@ def checkSpeed(url):
         response.read()
     stop_time = time()
     #print(stop_time)
+    downloadTime = stop_time - start_time
     print(f'Elapsed time is {stop_time - start_time}')
+    speed = (20 * 8) / downloadTime
+    #print(f'Speed is {speed} from inside the checkSpeed')
+    return speed
 
 speed = checkSpeed(url)
-print(f'Download speed was {speed} Mbps')
+print(f'Download speed was {speed:.2f} Mbps')
+
+help(checkSpeed)
+### OPTIONAL WITH SPEEDTEST-CLI module
+### 
+import speedtest
+servers = []
+# If you want to test against a specific server
+# servers = [1234]
+
+threads = None
+# If you want to use a single threaded test
+# threads = 1
+
+s = speedtest.Speedtest()
+s.get_servers(servers)
+s.get_best_server()
+download_speed = s.download(threads=threads)
+upload_speed = s.upload(threads=threads)
+print(download_speed /1024/1024, upload_speed/1024/1024)
+s.results.share()
+
+results_dict = s.results.dict()
+dl = results_dict.get('download')
+print(dl/1024/1024)
+
+
 
 # Check for modules
 # if module not found
