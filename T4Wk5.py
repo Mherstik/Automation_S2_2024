@@ -57,7 +57,9 @@ import re, uuid
 print ("The MAC address in formatted and less complex way is : ", end="")
 print (':'.join(re.findall('..', '%012x' % uuid.getnode())))
 
-# import getmac
+import getmac
+
+
 
 ## IP ADDRESS stuff
 ## what IP address am I getting the MAC address of
@@ -65,12 +67,43 @@ import psutil
 for interface in psutil.net_if_addrs():
     # Check if the interface has a valid MAC address
     print(interface)
-    # if psutil.net_if_addrs()[interface][0].address:
-    #     # Print the MAC address for the interface
-    #     print(psutil.net_if_addrs()[interface][0].address)
-    #     #break
+    if psutil.net_if_addrs()[interface][0].address:
+        # Print the MAC address for the interface
+        print(psutil.net_if_addrs()[interface][0].address)
+        #break
+
+totalPSUTILS = psutil.net_if_addrs()
+
+## print(totalPSUTILS) # not ideal.. has key value pairs
 
 
+
+###  lets use socket to do this
+import socket
+
+## create a socket using UDP
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+## connect to Google on port 80
+s.connect(("8.8.8.8", 80))
+
+# print("I have connected")
+# get the list
+#print(s.getsockname())
+
+# store it as a variable for later.
+socketName = s.getsockname()
+
+# print(s.getsockname()[0])  # get the first item
+# don't forget to close the connection
+
+s.close()
+print(socketName[0])
+
+
+### try PSUTILS for ports
+port_list = psutil.net_connections()
+print(len(port_list))  ## this shows how many items in the list
 
 
 
