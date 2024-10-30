@@ -54,7 +54,9 @@ def checkSpeed(url):
 speed = checkSpeed(url)
 print(f'Download speed was {speed:.2f} Mbps')
 
-help(checkSpeed)
+# help(checkSpeed)
+
+
 ### OPTIONAL WITH SPEEDTEST-CLI module
 ### 
 import speedtest
