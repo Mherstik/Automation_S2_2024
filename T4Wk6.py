@@ -139,7 +139,7 @@ print(df.isin([mac_add,nodeName]).any(axis=1))  #get all lines with either match
 
 # Get with both matching
 print("------------\n")
-print("The rows with matching data are:")
+print("The rows with both matching data are:")
 print(df.loc[(df['MAC address'] == mac_add) & 
              (df['Node Name'] == nodeName)])
 ###
