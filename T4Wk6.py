@@ -95,7 +95,7 @@ if isFile == True:
 f = open(filename, "a")
 
 if isFile == False:
-    f.write("Time/Date, Speed, MAC address, Node Name\n")  ## make this optional
+    f.write("Time/Date" + "," + "Speed" + "," + "MAC address" +"," + "Node Name\n")  ## make this optional
 
 f.write(f"{time.ctime()},")
 f.write(str(speed) + "," + mac_add + "," + nodeName + "\n")
@@ -114,4 +114,14 @@ f.close()
 
 print("\n\n---------\nPost writing read!!\n---------\n\n")
 
-# readCSVFile()
+# readCSVFile with Pandas
+import pandas as pd
+df = pd.read_csv(filename)   # a data frame of the whole file
+column_names = list(df.columns)
+print(column_names)
+colCheck = ['MAC address', 'Node Name']
+df2 = pd.read_csv(filename, usecols = colCheck)
+print(df2)
+###
+
+
