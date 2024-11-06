@@ -7,12 +7,26 @@ Created on Wed Nov  6 14:27:29 2024
 """
 import time
 from urllib import request
-
 import uuid
 import re
+import os
+import csv
+import platform
+
+my_system = platform.uname()
+nodeName = my_system.node
+
+
+## FILE READER
+### NICER OPENING
+def readCSVFile():
+    with open(filename, mode='r') as file:
+        csvFile = csv.reader(file)
+        for lines in csvFile:
+            print(lines)
+
 # joins elements of getnode() after each 2 digits.
 # using regex expression
-print ("The MAC address in formatted and less complex way is : ", end="")
 mac_add =  ':'.join(re.findall('..', '%012x' % uuid.getnode()))
 
 
@@ -45,22 +59,59 @@ def speedtester():
     return speed
 
 speed = speedtester()
-print(f"Your internet is running at {speed:.2f}Mbps")
+# print(f"Your internet is running at {speed:.2f}Mbps")
+
+
+## Working with the file
 ### check if file exists.
 ## if file DOES NOT exist... write the headers
-## if file exists... move to adding speed to file
-## else add speed to file
+## if file exists... move to adding speed etc to file
+## else add speed etc to file
 
 
-filename = "tester.csv"
+filename = "aaatester.csv"
+
+isFile = os.path.isfile(filename)
+
+print("---------\nPre writing read!!\n")
+# readCSVFile()
+
+## find mac addresses
+if isFile == True:
+    with open(filename, mode='r') as file:
+        csvFile = csv.reader(file)
+        i = 1
+        for row in csvFile:
+            # print(f"checking row {i}")
+            macCheck = row[2]
+            nodes = row[3]
+            # print(macCheck)
+            if macCheck == mac_add and nodeName == nodes:
+                print(f"Row {i} has a {macCheck} & {nodeName} is a match!")
+            # else:
+            #     print("no match")
+            i = i + 1
+
 f = open(filename, "a")
 
-f.write("Time/Date, Speed\n")  ## make this optional
+if isFile == False:
+    f.write("Time/Date, Speed, MAC address, Node Name\n")  ## make this optional
 
 f.write(f"{time.ctime()},")
-f.write(str(speed) + "," + mac_add + "\n")
+f.write(str(speed) + "," + mac_add + "," + nodeName + "\n")
 f.close()
 
 ### Read the file
-with open(filename, "r") as f:
-    print(f.read())
+# with open(filename, "r") as f:
+#     print(f.read())
+
+# print("read as CSV file\n")
+# exampleFile = open('filename')
+# exampleReader = csv.reader(exampleFile)
+# exampleData = list(exampleReader)
+# print(exampleData)
+
+
+print("\n\n---------\nPost writing read!!\n---------\n\n")
+
+# readCSVFile()
