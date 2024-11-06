@@ -114,14 +114,34 @@ f.close()
 
 print("\n\n---------\nPost writing read!!\n---------\n\n")
 
+#####
+#
 # readCSVFile with Pandas
+#
+#####
 import pandas as pd
 df = pd.read_csv(filename)   # a data frame of the whole file
 column_names = list(df.columns)
+print("Column names are:")
 print(column_names)
-colCheck = ['MAC address', 'Node Name']
-df2 = pd.read_csv(filename, usecols = colCheck)
-print(df2)
-###
+print("------------\n")
 
+colCheck = ['MAC address', 'Node Name']
+df2 = pd.read_csv(filename, usecols = colCheck) # a data frame of only columns I'm interested in
+print("------------\n")
+print("Just the data with the columns we want to check are:")
+print(df2)
+print("------------\n")
+
+# Get any matching mac address or nodename from the main dataframe
+print("Some data is matched in the following lines:")
+print(df.isin([mac_add,nodeName]).any(axis=1))  #get all lines with either match
+
+# Get with both matching
+print("------------\n")
+print("The columns with matching data are:")
+print(df.loc[(df['MAC address'] == mac_add) & 
+             (df['Node Name'] == nodeName)])
+###
+print("------------\n")
 
