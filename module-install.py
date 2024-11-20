@@ -17,14 +17,16 @@ def install(package):
 def check_install(package):
     try:
         __import__(package)
+        print(f"{package} is available")
     except ImportError:
+        print(f"{package} not available.\nInstalling now...")
         install(package)
 
 # Example usage:
 # check_install("psutil")
 # check_install("speedtest-cli")
 
-packageList = ['psutil', 'speedtest-cli']
+packageList = ['uuid','psutil', 'speedtest-cli', 'pandas']
 
 for package in packageList:
     check_install(package)
@@ -32,7 +34,8 @@ for package in packageList:
 # Import the modules after ensuring they are installed
 import psutil
 import speedtest
-
+import pandas
+import uuid
 
 # ### Explanation:
 # 1. **Install Function**: The `install` function uses `subprocess.check_call` to call `pip` and install the specified package.
