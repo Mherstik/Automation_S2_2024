@@ -86,7 +86,7 @@ def readCSVFile(data):
                 print(f"Row {i} has a {hostCheck} & {sysName} is a match!")
                 ##
                 # ask if they want to exit
-                cont = input("DO you want to exit [Y/n]: ")
+                cont = input("Do you want to exit [Y/n]: ")
                 if cont.lower() == 'y':
                     sys.exit()
                
