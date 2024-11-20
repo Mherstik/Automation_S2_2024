@@ -1,17 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov 20 15:14:50 2024
+Created on Wed Nov 20 16:53:19 2024
 
 @author: marcus
 """
+
 
 import psutil
 import csv
 import time
 import os
+import platform
+import sys
+
+my_system = platform.uname()
+
+#print(f"System: {my_system.system}")
+#print(f"Node Name: {my_system.node}")
 
 currentTime = time.ctime()
+
+hostName = my_system.node
+# print(hostName)
+sysName = my_system.system
 
 def getActivePorts():
     active_ports = []
@@ -28,7 +40,7 @@ fileName = input("Gimme a filename: ")
 isFile = os.path.isfile(fileName)
 
 
-header = ['Time', 'ports']
+header = ['Time','hostname', 'sysname', 'ports']
 def writeHeader():
     with open(fileName, mode='w') as file:
         writer = csv.writer(file)
@@ -49,50 +61,45 @@ else:
     writeHeader()
 
 
-data = [currentTime, portListen]
+data = [currentTime, hostName, sysName, portListen]
+
+def write2CSV(data):
+    with open(fileName, mode='a') as file:
+        writer = csv.writer(file)
+        writer.writerow(data)
+
 
 ### NICER OPENING
-def readCSVFile():
+def readCSVFile(data):
     with open(fileName, mode='r') as file:
         csvFile = csv.reader(file)
-        for lines in csvFile:
-            print(lines)
+        # for lines in csvFile:
+        #     print(lines)
 
-with open(fileName, mode='a') as file:
-    writer = csv.writer(file)
-    writer.writerow(data)
-
-
-
-readCSVFile()
-
-
-
-
-
-
-
-#####################
-# portEstab = []
-# portAll = []
-
-# connectList = psutil.net_connections(kind='tcp4')
-# for each in connectList:
-#      if each.status == 'ESTABLISHED':
-#         portEstab.append(each.laddr.port)
-
-# connectList = psutil.net_connections(kind='tcp4')
-# for each in connectList:
-#      portAll.append(each.laddr.port)
+        i = 1
+        for row in csvFile:
+            # print(f"checking row {i}")
+            hostCheck = row[1]
+            sysNameCheck = row[2]
+            # print(macCheck)
+            if hostCheck == hostName and sysNameCheck == sysName:
+                print(f"Row {i} has a {hostCheck} & {sysName} is a match!")
+                ##
+                # ask if they want to exit
+                cont = input("DO you want to exit [Y/n]: ")
+                if cont.lower() == 'y':
+                    sys.exit()
+               
+            i = i + 1
+        write2CSV(data)
+            # else:
+            #     print("no match")
+           
+readCSVFile(data)
 
 
-# print(len(portListen), len(portEstab), len(portAll))
-# print(portListen, "\n", portEstab, "\n", portAll)
-# print(port_list)
-# port_list = psutil.net_connections()
-# for port in port_list:
-#     print(port[:4])   # this shows the list of ports
-#     i = i + 1
-#     if i == 3:
-#         break
-# print(len(portList))  ## this shows how many items in the list
+
+
+
+
+
