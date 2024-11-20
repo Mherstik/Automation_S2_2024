@@ -18,14 +18,20 @@ def getActivePorts():
 
 portListen = getActivePorts()
 portEstab = []
+portAll = []
 
 connectList = psutil.net_connections(kind='tcp4')
 for each in connectList:
      if each.status == 'ESTABLISHED':
         portEstab.append(each.laddr.port)
 
-print(len(portListen), len(portEstab))
+connectList = psutil.net_connections(kind='tcp4')
+for each in connectList:
+     portAll.append(each.laddr.port)
 
+
+print(len(portListen), len(portEstab), len(portAll))
+print(portListen, "\n", portEstab, "\n", portAll)
 # print(port_list)
 # port_list = psutil.net_connections()
 # for port in port_list:
