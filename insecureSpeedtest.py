@@ -44,16 +44,13 @@ from time import time, ctime, gmtime
 import os
 import sys
 import csv
-import ssl
+
 ## speedtest starts
 ## 
-import urllib.request # to get the url
 
 
 
 
-url = 'https://github.com/Mherstik/Automation_S2_2024/raw/refs/heads/main/20MB.zip'
-# url = 'http://speed.hetzner.de/100MB.bin'
 
 
 def checkSpeed(url):
@@ -70,14 +67,25 @@ def checkSpeed(url):
         the speed divided by the time it took to download.
 
     '''
-    context = ssl._create_unverified_context()  # Skip SSL verification
+    import urllib.request # to get the url
+    import ssl
+
+    URL = 'https://github.com/Mherstik/Automation_S2_2024/raw/refs/heads/main/20MB.zip'
+    # URL = 'http://speed.hetzner.de/100MB.bin'
+
+    start_time = time.time()  
     
-    start_time = time()  # or time.time()
-    #print(start_time)
-    ## DO TESTS
-    with urllib.request.urlopen(url, context=context) as response:
-        response.read()
-    stop_time = time()
+    try: 
+        with urllib.request.urlopen(URL) as response:
+            response.read()
+    except:
+        import ssl
+        context = ssl._create_unverified_context()  # Skip SSL verification
+        with urllib.request.urlopen(URL, context=context) as response:
+            response.read()
+
+        
+    stop_time = time.time()
     #print(stop_time)
     downloadTime = stop_time - start_time
     print(f'Elapsed time is {stop_time - start_time}')
