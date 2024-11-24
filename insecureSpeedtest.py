@@ -48,11 +48,6 @@ import csv
 ## speedtest starts
 ## 
 
-
-
-
-
-
 def checkSpeed(url):
     '''
 
@@ -68,7 +63,6 @@ def checkSpeed(url):
 
     '''
     import urllib.request # to get the url
-    import ssl
 
     URL = 'https://github.com/Mherstik/Automation_S2_2024/raw/refs/heads/main/20MB.zip'
     # URL = 'http://speed.hetzner.de/100MB.bin'
@@ -93,5 +87,5 @@ def checkSpeed(url):
     #print(f'Speed is {speed} from inside the checkSpeed')
     return speed
 
-speed = checkSpeed(url)
+speed = checkSpeed()
 print(f'Download speed was {speed:.2f} Mbps')
